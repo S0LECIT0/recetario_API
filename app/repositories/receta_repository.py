@@ -2,8 +2,11 @@ from sqlalchemy.orm import Session
 from app.models.receta import Receta
 from app.schemas.receta_schema import CrearReceta
 
-def obtener_recetas(db: Session):
-    return db.query(Receta).all()
+def obtener_recetas(db: Session, dificultad: str | None = None):
+    query = db.query(Receta)
+    if dificultad:
+        query = query.filter(Receta.dificultad.ilike(dificultad))
+    return query.all()
 
 def obtener_receta_por_id(db: Session, receta_id: int):
     return db.query(Receta).filter(Receta.id == receta_id).first()
