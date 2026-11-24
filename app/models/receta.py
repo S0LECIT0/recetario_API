@@ -1,8 +1,7 @@
 from sqlalchemy import Column, Integer, String, Time
-from database import Base
+from app.database.conexion import Base
 
 class Receta(Base):
-
     __tablename__ = "receta"
 
     id = Column(Integer, primary_key=True, index=True)

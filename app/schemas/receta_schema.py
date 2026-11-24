@@ -6,7 +6,7 @@ class CrearReceta(BaseModel):
     descripcion: str = Field(min_length=2, max_length=500)
     ingredientes: str = Field(min_length=2, max_length=500)
     tiempo_preparacion: time
-    numero_porciones: int = Field(gt=0)ñ
+    numero_porciones: int = Field(gt=0)
     dificultad: str = Field(min_length=2, max_length=20)
 
 class ResponsivoReceta(BaseModel):
