@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session
 from app.repositories import receta_repository
 from app.schemas.receta_schema import CrearReceta
 
-def listar_recetas(db: Session):
-    return receta_repository.obtener_recetas(db)
+def listar_recetas(db: Session, dificultad: str | None = None):
+    return receta_repository.obtener_recetas(db, dificultad)
 
 def obtener_receta(db: Session, receta_id: int):
     receta = receta_repository.obtener_receta_por_id(db, receta_id)

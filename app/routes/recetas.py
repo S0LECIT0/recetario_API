@@ -7,8 +7,8 @@ from app.services import receta_service
 router = APIRouter(prefix="/recetas", tags=["Recetas"])
 
 @router.get("", response_model=list[ResponsivoReceta])
-def get_recetas(db: Session = Depends(get_db)):
-    return receta_service.listar_recetas(db)
+def get_recetas(dificultad: str | None = None, db: Session = Depends(get_db)):
+    return receta_service.listar_recetas(db, dificultad)
 
 @router.get("/{receta_id}", response_model=ResponsivoReceta)
 def get_receta(receta_id: int, db: Session = Depends(get_db)):
